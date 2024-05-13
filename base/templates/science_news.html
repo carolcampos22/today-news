@@ -1,0 +1,31 @@
+{% extends "home.html" %}
+{% load bootstrap5 %}
+{% block principal %}
+
+<h1>Notícias de Ciências</h1>
+
+{% if news %}
+<div class="row">
+    {% for article in news %}
+        {% if article.category == "Ciências" %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <a href="{% url 'news_detail' news_id=article.id %}">
+                    <img src="{{ article.image }}" class="card-img-top" alt="{{ article.title }}">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{% url 'news_detail' news_id=article.id %}">{{ article.title }}</a>
+                    </h5>
+                    <p class="card-text">{{ article.subtitle }}</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% else %}
+<p>Nenhuma notícia disponível no momento.</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "home.html" %}
+{% load bootstrap5 %}
+{% block principal %}
+
+<div class="container mt-4">
+    <div class="card mb-3">
+        <p class="card-text">Categoria: {{ news.category }}</p>
+        <p class="card-text">Data de Publicação: {{ news.created_at }}</p><br>
+        <h1 class="card-title">{{ news.title }}</h1>
+        <p class="card-text">{{ news.subtitle }}</p>
+        <img src="{{ news.image }}" class="card-img-top" alt="{{ news.title }}">
+        <div class="card-body">
+           <p class="card-text">{{ news.description }}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
